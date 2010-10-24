@@ -180,6 +180,14 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->_kt->remove('inc_t1');
     }
 
+    public function testShouldIncrementDoubleData()
+    {
+        $this->_kt->remove('inc_t2');
+        $this->assertSame($this->_kt->incrementDouble('inc_t2', '2.5'), 2.5);
+        $this->assertSame($this->_kt->incrementDouble('inc_t2', '1.1'), 3.6);
+        $this->_kt->remove('inc_t2');
+    }
+
     public function testShouldComplareAndSwapData()
     {
         $this->_kt->remove('cas_t1');
