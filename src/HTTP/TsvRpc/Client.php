@@ -144,12 +144,11 @@ class Client
     /**
      * Send request.
      *
-     * @param  mixed $method
-     * @param  mixed $args
-     * @param  string $encoding
+     * @param  mixed $method Rpc method
+     * @param  mixed $args Args
+     * @param  string $encoding B(base64), U(Urlencode), Q(Quoted printable)
      * @access public
-     * @
-     * @return mixed
+     * @return mixed Status code and HTTP body
      */
     public function call($method, $args = array(), $encoding = 'B')
     {
