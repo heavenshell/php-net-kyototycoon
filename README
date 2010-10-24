@@ -1,0 +1,8 @@
+PHP Client library for KyotoTycoon.
+
+This module is porting from p5-Cache-KyotoTycoon(http://github.com/tokuhirom/p5-Cache-KyotoTycoon) to PHP.
+
+System requirement
+  PHP 5.3
+  PHPUnit
+  HTTP_Request2
