@@ -485,7 +485,7 @@ class KyotoTycoon
             return $this->_errmsg($response['code']);
         }
 
-        return intval($response['body']['num']);
+        return doubleval($response['body']['num']);
     }
 
     /**
@@ -685,7 +685,7 @@ class KyotoTycoon
     {
         $args = array('DB' => $this->_db);
         if (!is_null($step)) {
-            $args['step'] = $args;
+            $args['step'] = $step;
         }
         $response = $this->_client->call('vacuum', $args);
         if ($response['code'] !== 200) {
