@@ -103,6 +103,14 @@ class Client
     private $_parser = null;
 
     /**
+     * Last content data.
+     *
+     * @var    mixed
+     * @access private
+     */
+    private $_lastContent = null;
+
+    /**
      * Constructor
      *
      * @param  array $args
@@ -143,7 +151,7 @@ class Client
      * @
      * @return mixed
      */
-    public function call($method, $args, $encoding = 'B')
+    public function call($method, $args = array(), $encoding = 'B')
     {
         $content = $this->_parser->encodeTsvrpc($args, $encoding);
         $client  = $this->_client;
@@ -166,10 +174,26 @@ class Client
             $body = $this->_parser->decodeTsvrpc(
                 $response->getBody(), $resEncoding
             );
+            $this->_lastContent = $body;
             return array('code' => $code, 'body' => $body);
         }
 
         throw new Exception('Fail to call ' . $uri);
+    }
+
+    /**
+     * Get last content.
+     *
+     * <pre>
+     *   This is a debug method.
+     * </pre>
+     *
+     * @access public
+     * @return mixed
+     */
+    public function getLastContent()
+    {
+        return $this->_lastContent;
     }
 
     /**

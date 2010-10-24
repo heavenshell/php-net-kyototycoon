@@ -696,6 +696,17 @@ class KyotoTycoon
     }
 
     /**
+     * Get last content.
+     *
+     * @access public
+     * @return mixed Last content or null
+     */
+    public function getLastContent()
+    {
+        return $this->_client->getLastContent();
+    }
+
+    /**
      * Autoload class.
      *
      * @param  mixed $class
