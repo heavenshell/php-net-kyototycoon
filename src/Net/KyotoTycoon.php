@@ -133,6 +133,7 @@ class KyotoTycoon
             )
         );
 
+        $this->_db         = 0;
         $this->_client     = $client;
         $this->_statusCode = new StatusCode();
     }
