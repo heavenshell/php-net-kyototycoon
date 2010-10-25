@@ -249,16 +249,17 @@ class Cursor
      * @access public
      * @return mixed
      */
-    public function setValue($value, $xt, $step = null)
+    public function setValue($value, $xt = null, $step = null)
     {
         $args = array('CUR' => $this->_cursor, 'value' => $value);
         if (!is_null($xt)) {
             $args['xt'] = $xt;
         }
-        $args['step'] = is_null($step) ?: '';
+        if (!is_null($step)) {
+            $args['step'] = '';
+        }
 
-        $response = $this->_client->call('cur_step_back', $args);
-
+        $response = $this->_client->call('cur_set_value', $args);
         if ($response['code'] === 200) {
             return true;
         } else if ($response['code'] === 450) {
@@ -305,11 +306,13 @@ class Cursor
     public function getKey($step = null)
     {
         $args = array('CUR' => $this->_cursor);
-        $args['step'] = is_null($step) ?: '';
+        if (!is_null($step)) {
+            $args['step'] = '';
+        }
         $response = $this->_client->call('cur_get_key', $args);
 
         if ($response['code'] === 200) {
-            return $response['body']->key;
+            return $response['body']['key'];
         } else if ($response['code'] === 450) {
             return null;
         }
@@ -331,11 +334,13 @@ class Cursor
     public function getValue($step = null)
     {
         $args = array('CUR' => $this->_cursor);
-        $args['step'] = is_null($step) ?: '';
+        if (!is_null($step)) {
+            $args['step'] = '';
+        }
         $response = $this->_client->call('cur_get_value', $args);
 
         if ($response['code'] === 200) {
-            return $response['body']->value;
+            return $response['body']['value'];
         } else if ($response['code'] === 450) {
             return null;
         }
@@ -357,9 +362,11 @@ class Cursor
     public function get($step = null)
     {
         $args = array('CUR' => $this->_cursor);
-        $args['step'] = is_null($step) ?: '';
-        $response = $this->_client->call('cur_get', $args);
+        if (!is_null($step)) {
+            $args['step'] = '';
+        }
 
+        $response = $this->_client->call('cur_get', $args);
         if ($response['code'] === 200) {
             return array($response['body']['key'], $response['body']['value']);
         } else if ($response['code'] === 450) {
