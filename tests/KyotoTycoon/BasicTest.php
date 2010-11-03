@@ -54,6 +54,11 @@ use Net;
 require_once dirname(__DIR__) . '/prepare.php';
 
 /**
+ * @see \Net\KyotoTycoon
+ */
+require_once 'Net/KyotoTycoon.php';
+
+/**
  * Basic test.
  *
  * @use       Net
@@ -68,10 +73,23 @@ require_once dirname(__DIR__) . '/prepare.php';
 class BasicTest extends \PHPUnit_Framework_TestCase
 {
     private $_kt = null;
+    private static $_port = null;
+    public static function setUpBeforeClass()
+    {
+        require_once dirname(__DIR__) . '/Util.php';
+        Net\KyotoTycoon\Test\Util::run();
+        self::$_port = Net\KyotoTycoon\Test\Util::$port;
+    }
+
+    public static function tearDownAfterClass()
+    {
+        Net\KyotoTycoon\Test\Util::shutdown();
+    }
+
     public function setUp()
     {
-        require_once 'Net/KyotoTycoon.php';
-        $this->_kt = new KyotoTycoon();
+        $params = array('port' => self::$_port);
+        $this->_kt = new KyotoTycoon($params);
     }
 
     public function testShouldSetPlainData()
