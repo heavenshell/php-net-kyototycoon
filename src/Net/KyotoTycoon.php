@@ -122,10 +122,10 @@ class KyotoTycoon
     public function __construct(array $args = array())
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));
-        $host    = isset($args['host']) ?: '127.0.0.1';
-        $port    = isset($args['port']) ?: 1978;
+        $host    = isset($args['host']) ? $args['host'] : '127.0.0.1';
+        $port    = isset($args['port']) ? $args['port'] : 1978;
         $base    = "http://$host:$port/rpc/";
-        $timeout = isset($args['timeout']) ?: 3;
+        $timeout = isset($args['timeout']) ? $args['timeout'] : 1;
         $client  = new Client(
             array(
                 'timeout' => $timeout,
@@ -235,7 +235,7 @@ class KyotoTycoon
     {
         $args = array('name' => $name);
         foreach ($input as $k => $v) {
-            $args[$k] = $v;
+            $args["_$k"] = $v;
         }
         $response = $this->_client->call('play_script', $args);
         if ($response['code'] !== 200) {
@@ -244,7 +244,7 @@ class KyotoTycoon
         $body = $response['body'];
         $res  = array();
         foreach ($body as $k => $v) {
-            $res[$k] = $v;
+            $res[ltrim($k, '_')] = $v;
         }
 
         return $res;
@@ -728,6 +728,7 @@ class KyotoTycoon
                 $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
             }
             $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
             require_once $fileName;
         }
     }
