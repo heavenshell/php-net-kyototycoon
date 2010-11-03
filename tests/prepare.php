@@ -1,10 +1,10 @@
 <?php
 /**
- * Add comment
+ * Scripts for PHPUnit
  *
- * PHP version 5.2
+ * PHP version 5.3
  *
- * Copyright (c) 2009-2010 Shinya Ohyanagi, All rights reserved.
+ * Copyright (c) 2010 Shinya Ohyanagi, All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -35,10 +35,10 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * @category
- * @package
+ * @category  Net
+ * @package   Net\KyotoTycoon
  * @version   $id$
- * @copyright 2009-2010 Shinya Ohyanagi
+ * @copyright (c) 2010 Shinya Ohyanagi
  * @author    Shinya Ohyanagi <sohyanagi@gmail.com>
  * @license   New BSD License
  */
