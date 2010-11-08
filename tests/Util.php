@@ -83,7 +83,7 @@ class Util
         }
         $ktserver = exec('which ktserver');
         if ($ktserver === '') {
-            throw Exception('This test requires "ktserver".');
+            throw new \Exception('This test requires "ktserver".');
         }
         if (is_null($option)) {
             $command = sprintf(
