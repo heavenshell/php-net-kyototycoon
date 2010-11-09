@@ -76,7 +76,7 @@ class Client
     /**
      * Version.
      */
-    const VERSION = '0.0.2';
+    const VERSION = '0.0.3';
 
     /**
      * Base url.
@@ -158,7 +158,7 @@ class Client
         $uri     = $this->_base . $method;
         $headers = array(
             'Content-Type'   => "text/tab-separated-values; colenc=$encoding",
-            'Content-Length' => mb_strlen($content),
+            'Content-Length' => strlen($content),
             'Connection'     => 'Keep-Alive',
             'Keep-Alive'     => 300,
         );
