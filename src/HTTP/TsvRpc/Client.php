@@ -76,7 +76,7 @@ class Client
     /**
      * Version.
      */
-    const VERSION = '0.0.3';
+    const VERSION = '0.0.5';
 
     /**
      * Base url.
@@ -128,9 +128,13 @@ class Client
         }
         $base    = rtrim($base, '\//') . '/';
         $timeout = isset($args['timeout']) ? $args['timeout'] : 1;
-        $agent   = isset($args['agent']) ?: __CLASS__ . '/' . self::VERSION;
+        $agent   = isset($args['agent'])
+                 ? $args['agent']
+                 : __CLASS__ . '/' . self::VERSION;
 
-        $adapter = isset($args['adapter']) ?: 'HTTP_Request2_Adapter_Socket';
+        $adapter = isset($args['adapter'])
+                 ? $args['adapter']
+                 : 'HTTP_Request2_Adapter_Socket';
         $config  = array('adapter' => $adapter, 'timeout' => $timeout);
         $client  = new \HTTP_Request2(
             null, \HTTP_Request2::METHOD_POST, $config
