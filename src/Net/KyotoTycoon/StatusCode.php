@@ -132,7 +132,9 @@ class StatusCode
      */
     public function errmsg($code)
     {
-        $msg = isset($this->_statusCode[$code]) ?: 'Unknown';
+        $msg = isset($this->_statusCode[$code])
+             ? $this->_statusCode[$code]
+             : 'Unknown';
         return sprintf(
             'Net\KyotoTycoon unexpected response code: %s %s', $code, $msg
         );
