@@ -6,7 +6,7 @@
  *
  * PHP version 5.3
  *
- * Copyright (c) 2010 Shinya Ohyanagi, All rights reserved.
+ * Copyright (c) 2010-2011 Shinya Ohyanagi, All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -42,7 +42,7 @@
  * @category  HTTP
  * @package   HTTP\TsvRpc
  * @version   $id$
- * @copyright (c) 2010 Shinya Ohyanagi
+ * @copyright (c) 2010-2011 Shinya Ohyanagi
  * @author    Shinya Ohyanagi <sohyanagi@gmail.com>
  * @license   New BSD License
  * @link      http://search.cpan.org/~tokuhirom/Cache-KyotoTycoon/
@@ -66,7 +66,7 @@ use HTTP\TsvRpc\Parser,
  * @category  HTTP
  * @package   HTTP\TsvRpc
  * @version   $id$
- * @copyright (c) 2010 Shinya Ohyanagi
+ * @copyright (c) 2010-2011 Shinya Ohyanagi
  * @author    Shinya Ohyanagi <sohyanagi@gmail.com>
  * @license   New BSD License
  * @link      http://search.cpan.org/~tokuhirom/Cache-KyotoTycoon/
