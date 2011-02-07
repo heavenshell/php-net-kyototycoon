@@ -118,7 +118,7 @@ class CursorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->_cursor->get(1), array('b', 'OK'));
         list($k, $v) = $this->_cursor->get();
         $this->assertNotSame($k, 'b');
-        $this->assertSame($this->_kt->get($k), '1');
+        $this->assertNotSame($this->_kt->get($k), '2');
         $this->_kt->clear();
     }
 
