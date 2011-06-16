@@ -251,4 +251,44 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->_kt->removeBulk($data);
         $this->assertSame($this->_kt->getBulk(array('a', 'b', 'c')), array());
     }
+
+    public function testShouldMatchPrefix()
+    {
+        $this->_kt->clear();
+        $items = array('abc', 'abcd', 'abcde', 'abcdef', 'abcdefg', 'abcdefgh');
+
+        foreach ($items as $key) {
+            $this->_kt->set($key, 'val');
+        }
+
+        $list = $this->_kt->matchPrefix('abc');
+        $this->assertSame(count($list), 6);
+        $list = $this->_kt->matchPrefix('abcd');
+        $this->assertSame(count($list), 5);
+        $list = $this->_kt->matchPrefix('abc', 1);
+        $this->assertSame($list[0], 'abc');
+
+        $list = $this->_kt->matchPrefix('xyz');
+        $this->assertSame(count($list), 0);
+    }
+
+    public function testShouldMatchRegex()
+    {
+        $this->_kt->clear();
+        $items = array('abc', 'abcd', 'abcde');
+
+        foreach ($items as $key) {
+            $this->_kt->set($key, 'val');
+        }
+
+        $list = $this->_kt->matchRegex('^abc');
+        $this->assertSame(count($list), 3);
+        $list = $this->_kt->matchRegex('^abcd');
+        $this->assertSame(count($list), 2);
+        $list = $this->_kt->matchRegex('e$');
+        $this->assertSame(count($list), 1);
+
+        $list = $this->_kt->matchRegex('^xyz');
+        $this->assertSame(count($list), 0);
+    }
 }

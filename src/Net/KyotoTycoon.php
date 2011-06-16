@@ -74,7 +74,7 @@ class KyotoTycoon
     /**
      * Version.
      */
-    const VERSION = '0.0.1';
+    const VERSION = '0.0.2';
 
     /**
      * Status code.
@@ -694,6 +694,84 @@ class KyotoTycoon
         }
 
         return $this;
+    }
+
+    /**
+     * Call match_prefix.
+     *
+     * <pre>
+     *   Get keys matching a prefix string.
+     * </pre>
+     *
+     * @param  mixed $prefix The prefix string
+     * @param  mixed $max The maximum number to retrieve
+     * @access public
+     * @throws \Net\KyotoTycoon\Exception Response num and count is not same
+     * @return mixed Response of RPC call
+     */
+    public function matchPrefix($prefix, $max = null)
+    {
+        $args = array('DB' => $this->_db, 'prefix' => $prefix);
+        if (!is_null($max)) {
+            $args['max'] = $max;
+        }
+
+        $response = $this->_client->call('match_prefix', $args);
+        if ($response['code'] !== 200) {
+            throw new Exception($this->_errmsg($response['code']));
+        }
+        $body = $response['body'];
+        $ret  = array();
+        foreach ($body as $k => $v) {
+            if (preg_match('/^_(.+)$/', $k, $match)) {
+                $ret[] = $match[1];
+            }
+        }
+
+        if (intval($body['num']) !== count($ret)) {
+            throw new Exception('Fatal error');
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Call match_regex.
+     *
+     * <pre>
+     *   Get keys matching a ragular expression string.
+     * </pre>
+     *
+     * @param  mixed $regex The regular expression string
+     * @param  mixed $max The maximum number to retrieve
+     * @access public
+     * @throws \Net\KyotoTycoon\Exception Response num and count is not same
+     * @return mixed Response of RPC call
+     */
+    public function matchRegex($regex, $max = null)
+    {
+        $args = array('DB' => $this->_db, 'regex' => $regex);
+        if (!is_null($max)) {
+            $args['max'] = $max;
+        }
+
+        $response = $this->_client->call('match_regex', $args);
+        if ($response['code'] !== 200) {
+            throw new Exception($this->_errmsg($response['code']));
+        }
+        $body = $response['body'];
+        $ret  = array();
+        foreach ($body as $k => $v) {
+            if (preg_match('/^_(.+)$/', $k, $match)) {
+                $ret[] = $match[1];
+            }
+        }
+
+        if (intval($body['num']) !== count($ret)) {
+            throw new Exception('Fatal error');
+        }
+
+        return $ret;
     }
 
     /**

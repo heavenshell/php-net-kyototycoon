@@ -1,0 +1,4 @@
+2011-06-16 @heavenshell <sohyanagi@gmail.com>
+	* Add matchPrefix() for enable to use Kyoto Tycoon's match_prefix method.
+	* Add matchRegex() for enable to use Kyoto Tycoon's match_regrex method.
+	- Release: 0.0.2
