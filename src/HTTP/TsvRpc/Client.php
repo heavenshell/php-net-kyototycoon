@@ -119,7 +119,9 @@ class Client
      */
     public function __construct(array $args)
     {
-        spl_autoload_register(array(__CLASS__, 'autoload'));
+        if (!class_exists('HTTP/Request2.php', false)) {
+            spl_autoload_register(array(__CLASS__, 'autoload'));
+        }
         $base = '';
         if (isset($args['base'])) {
             $base = $args['base'];

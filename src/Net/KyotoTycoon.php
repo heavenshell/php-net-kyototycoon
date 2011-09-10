@@ -121,7 +121,11 @@ class KyotoTycoon
      */
     public function __construct(array $args = array())
     {
-        spl_autoload_register(array(__CLASS__, 'autoload'));
+        //if ((include_once 'HTTP/TsvRpc/Client.php') !== 1) {
+        if (!class_exists('HTTP\TsvRpc\Client', false)) {
+            spl_autoload_register(array(__CLASS__, 'autoload'));
+        }
+
         $host    = isset($args['host']) ? $args['host'] : '127.0.0.1';
         $port    = isset($args['port']) ? $args['port'] : 1978;
         $base    = "http://$host:$port/rpc/";
