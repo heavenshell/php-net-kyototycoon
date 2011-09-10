@@ -74,7 +74,7 @@ class KyotoTycoon
     /**
      * Version.
      */
-    const VERSION = '0.0.2';
+    const VERSION = '0.0.3';
 
     /**
      * Status code.
