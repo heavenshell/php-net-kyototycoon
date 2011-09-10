@@ -121,7 +121,6 @@ class KyotoTycoon
      */
     public function __construct(array $args = array())
     {
-        //if ((include_once 'HTTP/TsvRpc/Client.php') !== 1) {
         if (!class_exists('HTTP\TsvRpc\Client', false)) {
             spl_autoload_register(array(__CLASS__, 'autoload'));
         }
