@@ -4,7 +4,7 @@
  *
  * PHP version 5.3
  *
- * Copyright (c) 2010-2011 Shinya Ohyanagi, All rights reserved.
+ * Copyright (c) 2010-2012 Shinya Ohyanagi, All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -38,7 +38,7 @@
  * @category  Net
  * @package   Net\KyotoTycoon
  * @version   $id$
- * @copyright (c) 2010-2011 Shinya Ohyanagi
+ * @copyright (c) 2010-2012 Shinya Ohyanagi
  * @author    Shinya Ohyanagi <sohyanagi@gmail.com>
  * @license   New BSD License
  */
@@ -50,7 +50,7 @@ namespace Net\KyotoTycoon\Test;
  * @category  Net
  * @package   Net\KyotoTycoon
  * @version   $id$
- * @copyright (c) 2010-2011 Shinya Ohyanagi
+ * @copyright (c) 2010-2012 Shinya Ohyanagi
  * @author    Shinya Ohyanagi <sohyanagi@gmail.com>
  * @license   New BSD License
  */
